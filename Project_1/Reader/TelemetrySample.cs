@@ -1,6 +1,6 @@
 public sealed record TelemetrySample(
     DateTime Timestamp,
     string MachineId,
-    double Temeperature,
+    double Temperature,
     double Vibration,
     double Current);
