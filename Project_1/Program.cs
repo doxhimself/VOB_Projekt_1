@@ -7,7 +7,9 @@ engine.AlarmTriggered += (sender, alarm) =>
     Console.WriteLine($"[{alarm.Timestamp}] ALARM on {alarm.MachineId} | {alarm.RuleName}: {alarm.Message}");
 };
 
-foreach (var sample in TelemetryReader.ReadTelemetrySamples("telemetry.csv"))
+string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "telemetry.csv");
+
+foreach (var sample in TelemetryReader.ReadTelemetrySamples(filePath))
 {
     engine.Process(sample);
     Thread.Sleep(200);
