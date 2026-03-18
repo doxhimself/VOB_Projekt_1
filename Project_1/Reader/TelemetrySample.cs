@@ -3,4 +3,5 @@ public sealed record TelemetrySample(
     string MachineId,
     double Temperature,
     double Vibration,
-    double Current);
+    double Current,
+    double Pressure);
