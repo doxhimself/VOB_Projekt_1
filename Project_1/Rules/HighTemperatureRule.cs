@@ -16,7 +16,7 @@ public class HighTemperatureRule : AlarmRule
                 RuleName = "HighTemperature",
                 Message = $"Temperature {sample.Temperature} exceeds threshold {_threshold}"
             };
-            AlarmTriggered?.Invoke(this, alarm);
+            RaiseAlarm(alarm);
         }
     }
 }
