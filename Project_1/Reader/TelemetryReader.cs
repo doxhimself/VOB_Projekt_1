@@ -18,7 +18,7 @@ public static class TelemetryReader
                 continue;
 
             var parts = line.Split(';');
-            if (parts.Length != 5)
+            if (parts.Length != 6)
             {
                 Console.WriteLine($"Invalid line {lineNumber}: {line}");
                 continue;
@@ -35,8 +35,10 @@ public static class TelemetryReader
                 continue;
             if (!double.TryParse(parts[4].Trim(), NumberStyles.Float, CultureInfo.InvariantCulture, out var current))
                 continue;
+            if (!double.TryParse(parts[5].Trim(), NumberStyles.Float, CultureInfo.InvariantCulture, out var pressure))
+                continue;
 
-            yield return new TelemetrySample(timestamp, machineId, temperature, vibration, current);
+            yield return new TelemetrySample(timestamp, machineId, temperature, vibration, current, pressure);
         }
     }
 }
